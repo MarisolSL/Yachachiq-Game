@@ -2,26 +2,31 @@
 #include "Profesor.h"
 #include "Obstaculo.h"
 
-class Controladora
+ref class Controladora
 {
 private:
 	Profesor* profesor;
 	Obstaculos* obstaculos;
 
+	Bitmap^ imgSapitos;
+
 public:
 	Controladora()
 	{
+		imgSapitos = gcnew Bitmap("Recursos/sapitos.jpg");
+
 		profesor = new Profesor();
-		obstaculos = new Obstaculos(5, profesor->Area());
+		obstaculos = new Obstaculos(5, profesor->Area(), imgSapitos);
 	}
 	~Controladora()
 	{
 		delete profesor, obstaculos;
+		delete imgSapitos;
 	}
 
-	void MovimientoProfesor(bool accion, Keys tecla)
+	void MovimientoProfesor(bool accion, Keys tecla) //True: Presionar  False: Soltar
 	{
-		int v = 3;
+		int v = 10; //Velocidad
 
 		if (accion == true)
 		{
@@ -52,12 +57,12 @@ public:
 	{
 		if (obstaculos->Colision(profesor->NextArea()) == false)
 			profesor->Mover(g);
-		obstaculos->Mover(g);
+			obstaculos->Mover(g);
 	}
 	void Mostrar(Graphics^ g)
 	{
-		profesor->Mostrar(g);
-		obstaculos->Mostrar(g);
+		profesor->Mostrar(g, nullptr); //ninguna imagen todavia
+		obstaculos->Mostrar(g, imgSapitos);
 
 	}
 };

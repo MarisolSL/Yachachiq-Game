@@ -30,7 +30,7 @@ public: //Metodos
 		return Rectangle(x, y, Ancho, Alto);
 	}
 
-	Rectangle NextArea() //Area sigueinte posicion que va a tener Retangle en el tiempo
+	Rectangle NextArea() //Area siguiente posicion que va a tener Retangle en el tiempo
 	{
 		return Rectangle(x + dx, y + dy, Ancho, Alto);
 	}
@@ -43,7 +43,7 @@ public: //Metodos
 
 	}
 	//Metodo mostrar - Dibujar
-	virtual void Mostrar(Graphics^ g)
+	virtual void Mostrar(Graphics^ g, Bitmap^ img)
 	{
 		g->FillRectangle(Brushes::Black, Area());
 	}

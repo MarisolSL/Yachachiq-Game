@@ -17,11 +17,11 @@ public:
 		if (x + dx >= 0 && x + Ancho + dx < g->VisibleClipBounds.Width)
 			x += dx; //Entonces me puedo mover
 		//Si la sgt posicion es >= 0 y menor que alto formulario
-		if (y + dy >= 0 && x + Alto + dy < g->VisibleClipBounds.Height)
-			x += dx; //Entonces me puedo mover
+		if (y + dy >= 0 && y + Alto + dy < g->VisibleClipBounds.Height)
+			y += dy; //Entonces me puedo mover
 	
 	}
-	void Mostrar(Graphics^ g)
+	void Mostrar(Graphics^ g, Bitmap^ img)
 	{
 		g->FillRectangle(Brushes::Green, Area());
 	}
